@@ -299,94 +299,99 @@ class ExternalServiceToken(models.Model):
 ## Endpoints
 
 ### Authentication Endpoints
-- POST /api/token/  # Obtain JWT token for authentication
-- POST /api/token/refresh/  # Refresh JWT token
+- [ ] POST /api/token/  # Obtain JWT token for authentication
+- [ ] POST /api/token/refresh/  # Refresh JWT token
 
 ### Users Endpoints
-- GET /api/users/  # List all users
-- GET /api/users/{user_id}/  # Retrieve user details
-- POST /api/users/  # Register a new user
-- PATCH /api/users/{user_id}/  # Update user details
-- DELETE /api/users/{user_id}/  # Delete user account
+- [x] GET /api/users/  # List all users
+- [x] GET /api/users/{user_id}/  # Retrieve user details
+- [x] POST /api/users/  # Register a new user
+- [x] PATCH /api/users/{user_id}/  # Update user details
+- [x] DELETE /api/users/{user_id}/  # Delete user account
 
 ### Messaging Endpoints
-- GET /api/messages/  # List all messages
-- GET /api/messages/{message_id}/  # Retrieve a specific message
-- POST /api/messages/  # Send a new message
-- PATCH /api/messages/{message_id}/  # Update a message
-- DELETE /api/messages/{message_id}/  # Delete a message
+- [x] GET /api/messages/  # List all messages
+- [x] GET /api/{user_id}/sent_messages/  # List all user sent messages
+- [x] GET /api/{user_id}/received_messages/  # List all user received messages
+- [x] GET /api/{user_id}/messages/  # List all user messages, sent or received
+- [x] GET /api/{user1_id}/{user2_id}/messages/  # List all messages between two users
+- [x] GET /api/{sender_id}/{receiver_id}/messages_sent/  # List all messages from sender to receiver 
+- [x] GET /api/messages/{message_id}/  # Retrieve a specific message
+- [x] POST /api/messages/  # Send a new message
+- [ ] PATCH /api/messages/{message_id}/  # Update a message
+- [x] DELETE /api/messages/{message_id}/  # Delete a message
 ---
-- GET /api/groups/  # List all groups
-- GET /api/groups/{group_id}/  # Retrieve group details
-- POST /api/groups/  # Create a new group
-- PATCH /api/groups/{group_id}/  # Update group details
-- DELETE /api/groups/{group_id}/  # Delete a group
+- [ ] GET /api/groups/  # List all groups
+- [ ] GET /api/groups/{group_id}/  # Retrieve group details
+- [ ] POST /api/groups/  # Create a new group
+- [ ] PATCH /api/groups/{group_id}/  # Update group details
+- [ ] DELETE /api/groups/{group_id}/  # Delete a group
 ---
-- GET /api/group-messages/  # List all group messages
-- GET /api/group-messages/{message_id}/  # Retrieve a specific group message
-- POST /api/group-messages/  # Send a new group message
-- PATCH /api/group-messages/{message_id}/  # Update a group message
-- DELETE /api/group-messages/{message_id}/  # Delete a group message
+- [ ] GET /api/group-messages/  # List all group messages
+- [ ] GET /api/group-messages/{message_id}/  # Retrieve a specific group message
+- [ ] POST /api/group-messages/  # Send a new group message
+- [ ] PATCH /api/group-messages/{message_id}/  # Update a group message
+- [ ] DELETE /api/group-messages/{message_id}/  # Delete a group message
 ---
-- GET /api/polls/  # List all polls
-- GET /api/polls/{poll_id}/  # Retrieve poll details
-- POST /api/polls/  # Create a new poll
-- PATCH /api/polls/{poll_id}/  # Update poll details
-- DELETE /api/polls/{poll_id}/  # Delete a poll
+- [ ] GET /api/polls/  # List all polls
+- [ ] GET /api/polls/{poll_id}/  # Retrieve poll details
+- [ ] POST /api/polls/  # Create a new poll
+- [ ] PATCH /api/polls/{poll_id}/  # Update poll details
+- [ ] DELETE /api/polls/{poll_id}/  # Delete a poll
 ---
-- POST /api/poll-votes/  # Vote in a poll
+- [ ] POST /api/poll-votes/  # Vote in a poll
 ---
-- GET /api/custom-emoticons/  # List all custom emoticons
-- GET /api/custom-emoticons/{emoticon_id}/  # Retrieve a specific custom emoticon
-- POST /api/custom-emoticons/  # Create a new custom emoticon
-- PATCH /api/custom-emoticons/{emoticon_id}/  # Update a custom emoticon
-- DELETE /api/custom-emoticons/{emoticon_id}/  # Delete a custom emoticon
+- [ ] GET /api/custom-emoticons/  # List all custom emoticons
+- [ ] GET /api/custom-emoticons/{emoticon_id}/  # Retrieve a specific custom emoticon
+- [ ] POST /api/custom-emoticons/  # Create a new custom emoticon
+- [ ] PATCH /api/custom-emoticons/{emoticon_id}/  # Update a custom emoticon
+- [ ] DELETE /api/custom-emoticons/{emoticon_id}/  # Delete a custom emoticon
 ---
-- GET /api/message-reactions/  # List all message reactions
-- GET /api/message-reactions/{reaction_id}/  # Retrieve a specific message reaction
-- POST /api/message-reactions/  # Create a new message reaction
-- PATCH /api/message-reactions/{reaction_id}/  # Update a message reaction
-- DELETE /api/message-reactions/{reaction_id}/  # Delete a message reaction
+- [ ] GET /api/message-reactions/  # List all message reactions
+- [ ] GET /api/message-reactions/{reaction_id}/  # Retrieve a specific message reaction
+- [ ] POST /api/message-reactions/  # Create a new message reaction
+- [ ] PATCH /api/message-reactions/{reaction_id}/  # Update a message reaction
+- [ ] DELETE /api/message-reactions/{reaction_id}/  # Delete a message reaction
 
 ### Notifications Endpoints
-- GET /api/devices/  # List all devices
-- GET /api/devices/{device_id}/  # Retrieve device details
-- POST /api/devices/  # Register a new device
-- PATCH /api/devices/{device_id}/  # Update device details
-- DELETE /api/devices/{device_id}/  # Unregister a device
+- [ ] GET /api/devices/  # List all devices
+- [ ] GET /api/devices/{device_id}/  # Retrieve device details
+- [ ] POST /api/devices/  # Register a new device
+- [ ] PATCH /api/devices/{device_id}/  # Update device details
+- [ ] DELETE /api/devices/{device_id}/  # Unregister a device
 ---
-- GET /api/notifications/  # List all notifications
-- GET /api/notifications/{notification_id}/  # Retrieve a specific notification
-- PATCH /api/notifications/{notification_id}/  # Mark notification as read
-- DELETE /api/notifications/{notification_id}/  # Delete a notification
+- [ ] GET /api/notifications/  # List all notifications
+- [ ] GET /api/notifications/{notification_id}/  # Retrieve a specific notification
+- [ ] PATCH /api/notifications/{notification_id}/  # Mark notification as read
+- [ ] DELETE /api/notifications/{notification_id}/  # Delete a notification
 
 ### Profiles Endpoints
-- GET /api/user-profiles/  # List all user profiles
-- GET /api/user-profiles/{user_id}/  # Retrieve user profile details
-- PATCH /api/user-profiles/{user_id}/  # Update user profile details
+- [ ] GET /api/user-profiles/  # List all user profiles
+- [ ] GET /api/user-profiles/{user_id}/  # Retrieve user profile details
+- [ ] PATCH /api/user-profiles/{user_id}/  # Update user profile details
 ---
-- GET /api/friendships/  # List all friendships
-- GET /api/friendships/{friendship_id}/  # Retrieve friendship details
-- POST /api/friendships/  # Send a friend request
-- PATCH /api/friendships/{friendship_id}/  # Accept or reject a friend request
-- DELETE /api/friendships/{friendship_id}/  # Cancel or unfriend
+- [ ] GET /api/friendships/  # List all friendships
+- [ ] GET /api/friendships/{friendship_id}/  # Retrieve friendship details
+- [ ] POST /api/friendships/  # Send a friend request
+- [ ] PATCH /api/friendships/{friendship_id}/  # Accept or reject a friend request
+- [ ] DELETE /api/friendships/{friendship_id}/  # Cancel or unfriend
 ---
-- GET /api/user-statuses/  # List all user statuses
-- GET /api/user-statuses/{user_id}/  # Retrieve user status
-- PATCH /api/user-statuses/{user_id}/  # Update user status
+- [ ] GET /api/user-statuses/  # List all user statuses
+- [ ] GET /api/user-statuses/{user_id}/  # Retrieve user status
+- [ ] PATCH /api/user-statuses/{user_id}/  # Update user status
 ---
-- GET /api/user-settings/  # Retrieve user settings
-- PATCH /api/user-settings/  # Update user settings
+- [ ] GET /api/user-settings/  # Retrieve user settings
+- [ ] PATCH /api/user-settings/  # Update user settings
 
 ### Reviews Endpoints
-- POST /api/user-blocks/  # Block a user
-- DELETE /api/user-blocks/{block_id}/  # Unblock a user
+- [ ] POST /api/user-blocks/  # Block a user
+- [ ] DELETE /api/user-blocks/{block_id}/  # Unblock a user
 ---
-- POST /api/reports/  # Report inappropriate content
-- GET /api/reports/  # List all reports
-- GET /api/reports/{report_id}/  # Retrieve a specific report
-- PATCH /api/reports/{report_id}/  # Mark report as resolved
-- DELETE /api/reports/{report_id}/  # Delete a report
+- [ ] POST /api/reports/  # Report inappropriate content
+- [ ] GET /api/reports/  # List all reports
+- [ ] GET /api/reports/{report_id}/  # Retrieve a specific report
+- [ ] PATCH /api/reports/{report_id}/  # Mark report as resolved
+- [ ] DELETE /api/reports/{report_id}/  # Delete a report
 
 
 

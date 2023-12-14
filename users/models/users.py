@@ -35,6 +35,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(("email address"), unique=True)
     password = models.CharField(max_length=200, null=True, blank=True)
     username = models.CharField(max_length=200, null=False, blank=False, unique=True)
+    display_name = models.CharField(max_length=200, null=True, blank=True)
 
     phone = models.CharField(max_length=15, unique=True, null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to=generate_filename)

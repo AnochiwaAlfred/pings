@@ -14,6 +14,7 @@ class CustomUserAdmin(UserAdmin):
         "username",
         "email",
         "phone",
+        'display_name',
         "is_staff",
         "is_superuser",
     ]
@@ -23,7 +24,7 @@ class CustomUserAdmin(UserAdmin):
     filter_horizontal = []
     fieldsets = [
         (None, {"fields": ["username", "email", "password"]}),
-        ("Personal Info", {"fields": ["phone"]}),
+        ("Personal Info", {"fields": ['display_name', "phone"]}),
         ("Image", {"fields": ["image"]}),
         ("Permissions", {"fields": ["is_staff", "is_superuser"]}),
     ]

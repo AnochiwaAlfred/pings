@@ -78,14 +78,14 @@ class MessageReactionRetrievalSchema(Schema):
     
 class PollRegistrationSchema(Schema):
     question:str=None
-    options:json=None
+    options:str=None
     creator_id:str=None
 
 
 class PollRetrievalSchema(Schema):
     id:uuid.UUID=None
     question:str=None
-    options:json=None
+    options:str=None
     creator:AuthUserRetrievalSchema=None
     
     

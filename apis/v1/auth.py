@@ -37,7 +37,7 @@ def get_user(request):
         "code": user.code,
     }
 
-@router.post("/token", auth=None)  # < overriding global auth
+@router.post("/token/", auth=None)  # < overriding global auth
 def get_token(request, username: str = FormEx(...), password: str = FormEx(...)):
     """
     This will be used as signup request.
@@ -158,7 +158,7 @@ def verify_otp(request, email: str, otp: str):
     
 
 
-@router.post("/requestForgotPassword/{email}", auth=None)
+@router.post("/requestForgotPassword/{email}/", auth=None)
 def request_forgot_password(request, email:str):
     userInstance = CustomUser.objects.filter(email=email)
     if userInstance.exists():
@@ -212,7 +212,7 @@ def reset_forgot_password(request, email:str, otp:str, password1:str, password2:
         else:return {"Error": "Invalid OTP. Please try again."}
         
         
-@router.post("/logout")
+@router.post("/logout/")
 def logout(request):
     auth = request.auth
     user = CustomUser.objects.all().filter(token=auth)
@@ -222,7 +222,7 @@ def logout(request):
     }
 
 
-@router.post("createSuperUser", response=AuthUserRetrievalSchema)
+@router.post("createSuperUser/", response=AuthUserRetrievalSchema)
 def createSuperUser(
     request, password: str, data: AuthUserRegistrationSchema = FormEx(...)
 ):
@@ -236,7 +236,7 @@ def createSuperUser(
     return authuser
 
 
-@router.get("/getAllUsers", response=List[AuthUserRetrievalSchema])
+@router.get("/getAllUsers/", response=List[AuthUserRetrievalSchema])
 def getAllUsers(request):
     users = CustomUser.objects.all()
     return users
@@ -260,7 +260,7 @@ def login_user(request, email:str, password:str):
     return {"detail": "Invalid credentials"}
 
 
-@router.delete("/deleteUser/{user_id}")
+@router.delete("/deleteUser/{user_id}/")
 def delete_user(request, user_id):
     user = CustomUser.objects.get(id=user_id)
     user.delete()
