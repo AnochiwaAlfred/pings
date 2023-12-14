@@ -4,7 +4,7 @@ from django.conf import settings
 from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from django.views.static import serve
-# from apis.api import api as api
+from apis.api import api as api
 # from apis.v1.clientAuth import google_authenticate
 
 
@@ -20,7 +20,7 @@ urlpatterns = [
     # path('', include('admin_soft.urls')),
     
     # API URLS
-    # path(f"api/{VERSION}/", api.urls),
+    path(f"api/{VERSION}/", api.urls),
     
     # MEDIA URLS
     re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),

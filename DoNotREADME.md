@@ -397,10 +397,3 @@ class ExternalServiceToken(models.Model):
 
 
 
-
-
-
-
-
-
-pip install --upgrade pillow cloudinary cryptography crispy-bootstrap5 django-cors-headers django-countries django-crispy-forms django-ninja django-otp google-auth google-auth-oauthlib gunicorn PyJWT pyotp python-decouple requests social-auth-app-django social-auth-core twilio whitenoise django-unfold django-jazzmin
