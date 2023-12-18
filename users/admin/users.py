@@ -11,12 +11,15 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ["email__startswith", "username__startswith"]
     list_display = [
         "id",
+        "code",
         "username",
         "email",
         "phone",
         'display_name',
-        "is_staff",
-        "is_superuser",
+        "is_online",
+        "last_online",
+        # "is_staff",
+        # "is_superuser",
     ]
     list_filter = ["is_staff", "is_superuser"]
     list_display_links = ["username", "email"]

@@ -46,6 +46,13 @@ class PollVoteAdmin(admin.ModelAdmin):
     class Meta:
         verbose_name_plural = 'PollVotes'
 
+@admin.register(PollOption)
+class PollOptionAdmin(admin.ModelAdmin):
+    list_display = POLL_OPTION_LIST_DISPLAY
+
+    class Meta:
+        verbose_name_plural = 'PollOptions'
+
 @admin.register(Poll)
 class PollAdmin(admin.ModelAdmin):
     list_display = POLL_LIST_DISPLAY

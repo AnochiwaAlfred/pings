@@ -7,7 +7,8 @@ from plugins.generate_filename import generate_filename
 CHAT_GROUP_LIST_DISPLAY = ["id", "name"]
 
 class ChatGroup(CoreBaseModel):
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     members = models.ManyToManyField('users.CustomUser', related_name='chat_groups')
     group_picture = models.ImageField(null=True, blank=True, upload_to='chat_group_pictures/')
 

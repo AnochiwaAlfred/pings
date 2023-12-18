@@ -8,20 +8,20 @@ from schemas.auth import *
 
 class ChatGroupRegistrationSchema(Schema):
     name:str=None
-    group_picture:str=None
+    description:str=None
 
 
 class ChatGroupRetrievalSchema(Schema):
     id:uuid.UUID=None
     name:str=None
+    description:str=None
     members:List[AuthUserRetrievalSchema]=None
-    group_picture:str=None
+    # group_picture:str=None
     
     
 class CustomEmoticonRegistrationSchema(Schema):
     user_id:str=None
     shortcut:str=None
-    image:str=None
 
 
 class CustomEmoticonRetrievalSchema(Schema):
@@ -76,27 +76,37 @@ class MessageReactionRetrievalSchema(Schema):
     emoji:str=None
     
     
+class PollOptionRegistrationSchema(Schema):
+    context:str=None
+
+
+class PollOptionRetrievalSchema(Schema):
+    id:uuid.UUID=None
+    context:str=None
+    
+    
 class PollRegistrationSchema(Schema):
     question:str=None
-    options:str=None
     creator_id:str=None
 
 
 class PollRetrievalSchema(Schema):
     id:uuid.UUID=None
     question:str=None
-    options:str=None
     creator:AuthUserRetrievalSchema=None
+    options:List[PollOptionRetrievalSchema]=None
     
     
 class PollVoteRegistrationSchema(Schema):
     user_id:str=None
     poll_id:str=None
-    selected_option:str=None
+    selected_option_id:str=None
 
 
 class PollVoteRetrievalSchema(Schema):
     id:uuid.UUID=None
     user:AuthUserRetrievalSchema=None
     poll:PollRetrievalSchema=None
-    selected_option:str=None
+    selected_option:PollOptionRetrievalSchema=None
+    
+    

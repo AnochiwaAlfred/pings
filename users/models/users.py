@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 from plugins.generate_filename import generate_filename
@@ -29,7 +30,7 @@ class CustomUserManager(UserManager):
         extra_fields.setdefault("is_superuser", True)
         return self._create_user(username, password, email, **extra_fields)
 
-CUSTOM_USER_DISPLAY = ['id', 'email', 'username', 'is_superuser']
+CUSTOM_USER_DISPLAY = ['id', 'code', 'email', 'username', 'phone', 'is_online', 'last_online', 'is_superuser']
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     # DEFAULT FIELD
     email = models.EmailField(("email address"), unique=True)
@@ -43,6 +44,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    
+    is_online = models.BooleanField(default=False)
+    last_online = models.DateTimeField(null=True, blank=True)
     
     
     # section for mananging api session login
@@ -71,3 +75,21 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
     def custom_list_display():
         return CUSTOM_USER_DISPLAY
+    
+    def set_token(self, token):
+        self.token = token
+        self.save()
+        
+    def clear_token(self):
+        self.token = ''
+        self.save()
+        
+    def logout(self):
+        self.is_online=False
+        self.last_online=datetime.now(timezone.utc)
+        self.save()
+        
+    def login(self):
+        self.is_online=True
+        self.last_online=datetime.now(timezone.utc)
+        self.save()

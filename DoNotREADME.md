@@ -299,101 +299,111 @@ class ExternalServiceToken(models.Model):
 ## Endpoints
 
 ### Authentication Endpoints
-- [ ] POST /api/token/  # Obtain JWT token for authentication
-- [ ] POST /api/token/refresh/  # Refresh JWT token
+- [ ] POST /api/token  <font color="cornflowerblue">**# Obtain JWT token for authentication**</font>
+- [ ] POST /api/token/refresh  <font color="cornflowerblue">**# Refresh JWT token**</font>
 
 ### Users Endpoints
-- [x] GET /api/users/  # List all users
-- [x] GET /api/users/{user_id}/  # Retrieve user details
-- [x] POST /api/users/  # Register a new user
-- [x] PATCH /api/users/{user_id}/  # Update user details
-- [x] DELETE /api/users/{user_id}/  # Delete user account
+- [x] GET /api/users  <font color="cornflowerblue">**# List all users**</font>
+- [x] GET /api/users/{user_id}  <font color="cornflowerblue">**# Retrieve user details**</font>
+- [x] POST /api/users  <font color="cornflowerblue">**# Register a new user**</font>
+- [x] PATCH /api/users/{user_id}  <font color="cornflowerblue">**# Update user details**</font>
+- [x] DELETE /api/users/{user_id}  <font color="cornflowerblue">**# Delete user account**</font>
 
 ### Messaging Endpoints
-- [x] GET /api/messages/  # List all messages
-- [x] GET /api/{user_id}/sent_messages/  # List all user sent messages
-- [x] GET /api/{user_id}/received_messages/  # List all user received messages
-- [x] GET /api/{user_id}/messages/  # List all user messages, sent or received
-- [x] GET /api/{user1_id}/{user2_id}/messages/  # List all messages between two users
-- [x] GET /api/{sender_id}/{receiver_id}/messages_sent/  # List all messages from sender to receiver 
-- [x] GET /api/messages/{message_id}/  # Retrieve a specific message
-- [x] POST /api/messages/  # Send a new message
-- [ ] PATCH /api/messages/{message_id}/  # Update a message
-- [x] DELETE /api/messages/{message_id}/  # Delete a message
+- [x] GET /api/messages  <font color="cornflowerblue">**# List all messages**</font>
+- [x] GET /api/{user_id}/sent_messages  <font color="cornflowerblue">**# List all user sent messages**</font>
+- [x] GET /api/{user_id}/received_messages  <font color="cornflowerblue">**# List all user received messages**</font>
+- [x] GET /api/{user_id}/messages  <font color="cornflowerblue">**# List all user messages, sent or received**</font>
+- [x] GET /api/{user1_id}/{user2_id}/messages  <font color="cornflowerblue">**# List all messages between two users**</font>
+- [x] GET /api/{sender_id}/{receiver_id}/messages_sent  <font color="cornflowerblue">**# List all messages from sender to receiver**</font>
+- [x] GET /api/messages/{message_id}  <font color="cornflowerblue">**# Retrieve a specific message**</font>
+- [x] POST /api/messages  <font color="cornflowerblue">**# Send a new message**</font>
+- [ ] PATCH /api/messages/{message_id}  <font color="cornflowerblue">**# Update a message**</font>
+- [x] DELETE /api/messages/{message_id}  <font color="cornflowerblue">**# Delete a message**</font>
 ---
-- [ ] GET /api/groups/  # List all groups
-- [ ] GET /api/groups/{group_id}/  # Retrieve group details
-- [ ] POST /api/groups/  # Create a new group
-- [ ] PATCH /api/groups/{group_id}/  # Update group details
-- [ ] DELETE /api/groups/{group_id}/  # Delete a group
+- [x] GET /api/groups  <font color="cornflowerblue">**# List all groups**</font>
+- [x] GET /api/groups/{group_id}  <font color="cornflowerblue">**# Retrieve group details**</font>
+- [x] POST /api/groups  <font color="cornflowerblue">**# Create a new group**</font>
+- [x] PATCH /api/groups/{group_id}  <font color="cornflowerblue">**# Update group details**</font>
+- [x] DELETE /api/groups/{group_id}  <font color="cornflowerblue">**# Delete a group**</font>
 ---
-- [ ] GET /api/group-messages/  # List all group messages
-- [ ] GET /api/group-messages/{message_id}/  # Retrieve a specific group message
-- [ ] POST /api/group-messages/  # Send a new group message
-- [ ] PATCH /api/group-messages/{message_id}/  # Update a group message
-- [ ] DELETE /api/group-messages/{message_id}/  # Delete a group message
+- [x] GET /api/group-messages  <font color="cornflowerblue">**# List all group messages**</font>
+- [x] GET /api/{group_id}/group-messages  <font color="cornflowerblue">**# List all group messages in a particular group**</font>
+- [x] GET /api/{group_id}/{sender_id}/group-messages  <font color="cornflowerblue">**# List all group messages in a particular group from a </font>particular user**
+- [x] GET /api/group-messages/{message_id}  <font color="cornflowerblue">**# Retrieve a specific group message**</font>
+- [x] POST /api/group-messages  <font color="cornflowerblue">**# Send a new group message**</font>
+- [ ] PATCH /api/group-messages/{message_id}  <font color="cornflowerblue">**# Update a group message**</font>
+- [x] DELETE /api/group-messages/{message_id}  <font color="cornflowerblue">**# Delete a group message**</font>
 ---
-- [ ] GET /api/polls/  # List all polls
-- [ ] GET /api/polls/{poll_id}/  # Retrieve poll details
-- [ ] POST /api/polls/  # Create a new poll
-- [ ] PATCH /api/polls/{poll_id}/  # Update poll details
-- [ ] DELETE /api/polls/{poll_id}/  # Delete a poll
+- [x] GET /api/polls  <font color="cornflowerblue">**# List all polls**</font>
+- [x] GET /api/polls/{poll_id}  <font color="cornflowerblue">**# Retrieve poll details**</font>
+- [x] POST /api/polls/create  <font color="cornflowerblue">**# Create a new poll**</font>
+- [ ] PATCH /api/polls/{poll_id}  <font color="cornflowerblue">**# Update poll details**</font>
+- [x] POST /api/poll-options/create  <font color="cornflowerblue">**# Add poll options to a poll / Create Poll option**</font>
+- [x] DELETE /api/polls/{poll_id}  <font color="cornflowerblue">**# Delete a poll**</font>
 ---
-- [ ] POST /api/poll-votes/  # Vote in a poll
+- [x] GET /api/poll-options/list  <font color="cornflowerblue">**# List all poll options**</font>
+- [x] GET /api/poll-options/{poll_option_id}  <font color="cornflowerblue">**# Retrieve specific poll option details**</font>
+- [x] GET /api/poll-options/{poll_id}  <font color="cornflowerblue">**# List poll options for a poll**</font>
+- [x] DELETE /api/poll-options/{poll_option_id}/delete  <font color="cornflowerblue">**# Delete poll options / Remove from a poll**</font>
 ---
-- [ ] GET /api/custom-emoticons/  # List all custom emoticons
-- [ ] GET /api/custom-emoticons/{emoticon_id}/  # Retrieve a specific custom emoticon
-- [ ] POST /api/custom-emoticons/  # Create a new custom emoticon
-- [ ] PATCH /api/custom-emoticons/{emoticon_id}/  # Update a custom emoticon
-- [ ] DELETE /api/custom-emoticons/{emoticon_id}/  # Delete a custom emoticon
+- [x] GET /api/poll-votes/list  <font color="cornflowerblue">**# Retrieve poll votes list**</font>
+- [x] GET /api/poll-votes/{poll_vote_id}  <font color="cornflowerblue">**# Retrieve specific poll vote details**</font>
+- [x] GET /api/poll-votes/{poll_id}  <font color="cornflowerblue">**# Retrieve poll votes list for a particular poll**</font>
+- [x] GET /api/poll-votes/{poll_option_id}  <font color="cornflowerblue">**# Retrieve all poll votes for a particular poll option**</font>
+- [x] POST /api/poll-votes/create   <font color="cornflowerblue">**# Vote in a poll / Create a poll vote**</font>
+- [x] DELETE /api/poll-votes/{poll_vote_id}/delete  <font color="cornflowerblue">**# Delete poll vote / Remove from a poll**</font>
 ---
-- [ ] GET /api/message-reactions/  # List all message reactions
-- [ ] GET /api/message-reactions/{reaction_id}/  # Retrieve a specific message reaction
-- [ ] POST /api/message-reactions/  # Create a new message reaction
-- [ ] PATCH /api/message-reactions/{reaction_id}/  # Update a message reaction
-- [ ] DELETE /api/message-reactions/{reaction_id}/  # Delete a message reaction
+- [x] GET /api/custom-emoticons  <font color="cornflowerblue">**# List all custom emoticons**</font>
+- [x] GET /api/custom-emoticons/{emoticon_id}  <font color="cornflowerblue">**# Retrieve a specific custom emoticon**</font>
+- [x] POST /api/custom-emoticons  <font color="cornflowerblue">**# Create a new custom emoticon**</font>
+- [ ] PATCH /api/custom-emoticons/{emoticon_id}  <font color="cornflowerblue">**# Update a custom emoticon**</font>
+- [x] DELETE /api/custom-emoticons/{emoticon_id}  <font color="cornflowerblue">**# Delete a custom emoticon**</font>
+---
+- [x] GET /api/message-reactions  <font color="cornflowerblue">**# List all message reactions**</font>
+- [x] GET /api/message-reactions/{reaction_id}  <font color="cornflowerblue">**# Retrieve a specific message reaction**</font>
+- [x] POST /api/message-reactions  <font color="cornflowerblue">**# Create a new message reaction**</font>
+- [ ] PATCH /api/message-reactions/{reaction_id}  <font color="cornflowerblue">**# Update a message reaction**</font>
+- [x] DELETE /api/message-reactions/{reaction_id}  <font color="cornflowerblue">**# Delete a message reaction**</font>
 
 ### Notifications Endpoints
-- [ ] GET /api/devices/  # List all devices
-- [ ] GET /api/devices/{device_id}/  # Retrieve device details
-- [ ] POST /api/devices/  # Register a new device
-- [ ] PATCH /api/devices/{device_id}/  # Update device details
-- [ ] DELETE /api/devices/{device_id}/  # Unregister a device
+- [x] GET /api/devices  <font color="cornflowerblue">**# List all devices**</font>
+- [x] GET /api/{user_id}/devices  <font color="cornflowerblue">**# List all devices for user**</font>
+- [x] GET /api/devices/{device_id}  <font color="cornflowerblue">**# Retrieve device details**</font>
+- [x] POST /api/devices  <font color="cornflowerblue">**# Register a new device**</font>
+- [ ] PATCH /api/devices/{device_id}  <font color="cornflowerblue">**# Update device details**</font>
+- [x] DELETE /api/devices/{device_id}  <font color="cornflowerblue">**# Unregister a device**</font>
 ---
-- [ ] GET /api/notifications/  # List all notifications
-- [ ] GET /api/notifications/{notification_id}/  # Retrieve a specific notification
-- [ ] PATCH /api/notifications/{notification_id}/  # Mark notification as read
-- [ ] DELETE /api/notifications/{notification_id}/  # Delete a notification
+- [x] GET /api/notifications  <font color="cornflowerblue">**# List all notifications**</font>
+- [x] GET /api/notifications/{notification_id}  <font color="cornflowerblue">**# Retrieve a specific notification**</font>
+- [x] GET /api/notifications/{user_id}/notifications  <font color="cornflowerblue">**# List a specific user's notifications**</font>
+- [x] PATCH /api/notifications/{notification_id}/mark-as-read  <font color="cornflowerblue">**# Mark notification as read**</font>
+- [x] DELETE /api/notifications/{notification_id}  <font color="cornflowerblue">**# Delete a notification**</font>
 
 ### Profiles Endpoints
-- [ ] GET /api/user-profiles/  # List all user profiles
-- [ ] GET /api/user-profiles/{user_id}/  # Retrieve user profile details
-- [ ] PATCH /api/user-profiles/{user_id}/  # Update user profile details
+- [ ] GET /api/user-profiles  <font color="cornflowerblue">**# List all user profiles**</font>
+- [ ] GET /api/user-profiles/{user_id}  <font color="cornflowerblue">**# Retrieve user profile details**</font>
+- [ ] PATCH /api/user-profiles/{user_id}  <font color="cornflowerblue">**# Update user profile details**</font>
 ---
-- [ ] GET /api/friendships/  # List all friendships
-- [ ] GET /api/friendships/{friendship_id}/  # Retrieve friendship details
-- [ ] POST /api/friendships/  # Send a friend request
-- [ ] PATCH /api/friendships/{friendship_id}/  # Accept or reject a friend request
-- [ ] DELETE /api/friendships/{friendship_id}/  # Cancel or unfriend
+- [x] GET /api/friendships  <font color="cornflowerblue">**# List all friendships**</font>
+- [x] GET /api/friendships/{friendship_id}  <font color="cornflowerblue">**# Retrieve friendship details**</font>
+- [x] GET /api/friendships/{user_id}/friends  <font color="cornflowerblue">**# List all of a users friends**</font>
+- [x] POST /api/friendships  <font color="cornflowerblue">**# Send a friend request**</font>
+- [x] PATCH /api/friendships/{friendship_id}/accept  <font color="cornflowerblue">**# Accept a friend request**</font>
+- [x] DELETE /api/friendships/{friendship_id}  <font color="cornflowerblue">**# Cancel or unfriend**</font>
 ---
-- [ ] GET /api/user-statuses/  # List all user statuses
-- [ ] GET /api/user-statuses/{user_id}/  # Retrieve user status
-- [ ] PATCH /api/user-statuses/{user_id}/  # Update user status
----
-- [ ] GET /api/user-settings/  # Retrieve user settings
-- [ ] PATCH /api/user-settings/  # Update user settings
+- [ ] GET /api/user-settings  <font color="cornflowerblue">**# Retrieve user settings**</font>
+- [ ] PATCH /api/user-settings  <font color="cornflowerblue">**# Update user settings**</font>
 
 ### Reviews Endpoints
-- [ ] POST /api/user-blocks/  # Block a user
-- [ ] DELETE /api/user-blocks/{block_id}/  # Unblock a user
+- [ ] POST /api/user-blocks  <font color="cornflowerblue">**# Block a user**</font>
+- [ ] DELETE /api/user-blocks/{block_id}  <font color="cornflowerblue">**# Unblock a user**</font>
 ---
-- [ ] POST /api/reports/  # Report inappropriate content
-- [ ] GET /api/reports/  # List all reports
-- [ ] GET /api/reports/{report_id}/  # Retrieve a specific report
-- [ ] PATCH /api/reports/{report_id}/  # Mark report as resolved
-- [ ] DELETE /api/reports/{report_id}/  # Delete a report
-
-
+- [ ] POST /api/reports  <font color="cornflowerblue">**# Report inappropriate content**</font>
+- [ ] GET /api/reports  <font color="cornflowerblue">**# List all reports**</font>
+- [ ] GET /api/reports/{report_id}  <font color="cornflowerblue">**# Retrieve a specific report**</font>
+- [ ] PATCH /api/reports/{report_id}  <font color="cornflowerblue">**# Mark report as resolved**</font>
+- [ ] DELETE /api/reports/{report_id}  <font color="cornflowerblue">**# Delete a report**</font>
 
 
 

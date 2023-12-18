@@ -24,9 +24,3 @@ class UserSettingAdmin(admin.ModelAdmin):
     class Meta:
         verbose_name_plural = 'User Settings'
         
-@admin.register(UserStatus)
-class UserStatusAdmin(admin.ModelAdmin):
-    list_display = USER_STATUS_LIST_DISPLAY
-
-    class Meta:
-        verbose_name_plural = 'User Statuses'

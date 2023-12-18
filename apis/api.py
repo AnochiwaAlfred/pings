@@ -8,8 +8,12 @@ from http import HTTPStatus
 from decouple import config 
 
 from apis.v1.auth import router as auth_router
-from apis.v1.messaging import router as messaging_router
+from apis.v1.messaging.chatgroups import router as chatgroups_router
+from apis.v1.messaging.custom_emoticons import router as custom_emoticons_router
+from apis.v1.messaging.group_messages import router as group_messages_router
+from apis.v1.messaging.messages import router as messages_router
 from apis.v1.notifications import router as notifications_router
+from apis.v1.messaging.polls import router as polls_router
 from apis.v1.profiles import router as profiles_router
 from apis.v1.reviews import router as reviews_router
 from apis.v1.users import router as users_router
@@ -58,8 +62,12 @@ api = NinjaAPI(
 # let this be the first one.
 api.add_router("/auth/", auth_router)
 # -----------------------------------------------------
-api.add_router("/messaging/", messaging_router)
+api.add_router("/chatgroups/", chatgroups_router)
+api.add_router("/custom_emoticons/", custom_emoticons_router)
+api.add_router("/group_messages/", group_messages_router)
+api.add_router("/messages/", messages_router)
 api.add_router("/notifications/", notifications_router)
+api.add_router("/polls/", polls_router)
 api.add_router("/profiles/", profiles_router)
 api.add_router("/reviews/", reviews_router)
 api.add_router("/users/", users_router)

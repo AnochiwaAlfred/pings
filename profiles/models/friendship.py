@@ -11,6 +11,8 @@ FRIENDSHIP_LIST_DISPLAY = ["id", "user", "friend"]
 class Friendship(CoreBaseModel):
     user = models.ForeignKey('users.CustomUser', related_name='friendships', on_delete=models.CASCADE, null=True, blank=True)
     friend = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, null=True, blank=True)
+    is_accepted = models.BooleanField(default=False)
+    
     def __str__(self):
         return f"Friendship - {self.id}"
     

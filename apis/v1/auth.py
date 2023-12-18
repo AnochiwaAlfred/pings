@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from ninja import Router, Schema
 from decouple import config
 from ninja import NinjaAPI, FormEx
@@ -7,6 +7,7 @@ from plugins.generate_otp import generate_otp
 from users.models import *
 from schemas.auth import *
 from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import logout as contrib_logout
 from django.contrib.auth import authenticate
 from plugins.hasher import hasherGenerator
 from datetime import datetime, timedelta, timezone
@@ -36,6 +37,18 @@ def get_user(request):
         "email": user.email,
         "code": user.code,
     }
+
+
+@router.get("/getAllUsers/", response=List[AuthUserRetrievalSchema])
+def getAllUsers(request):
+    users = CustomUser.objects.all()
+    return users
+
+
+@router.get("/{user_id}/get/", response=Union[AuthUserRetrievalSchema, str])
+def get_user_by_id(request, user_id):
+    user = get_object_or_404(CustomUser, id=user_id)
+    return user
 
 @router.post("/token/", auth=None)  # < overriding global auth
 def get_token(request, username: str = FormEx(...), password: str = FormEx(...)):
@@ -69,7 +82,7 @@ def register_user_with_email(
     if password==passwordConfirm:
         user.set_password(password)
         user.save()
-    return {"Message": f"Registration successful. ID --> {user.id}"}
+    return {"message": f"Registration successful. ID --> {user.id} BKEND"}
 
 
 
@@ -212,11 +225,12 @@ def reset_forgot_password(request, email:str, otp:str, password1:str, password2:
         else:return {"Error": "Invalid OTP. Please try again."}
         
         
-@router.post("/logout/")
-def logout(request):
-    auth = request.auth
-    user = CustomUser.objects.all().filter(token=auth)
-    user.update(**{"token": "", "key": ""})
+@router.post("/logout/{token}")
+def logout(request, token):
+    user = CustomUser.objects.filter(token=token)[0]
+    user.logout()
+    contrib_logout(request)
+    user.clear_token()
     return {
         "message": "User Logged Out; You can sign in again using your username and password."
     }
@@ -235,29 +249,32 @@ def createSuperUser(
         authuser.save()
     return authuser
 
-
-@router.get("/getAllUsers/", response=List[AuthUserRetrievalSchema])
-def getAllUsers(request):
-    users = CustomUser.objects.all()
-    return users
-
-
 User = get_user_model()
 
 
-@router.post("/login/")
-def login_user(request, email:str, password:str):
-    user = authenticate(request, username=email, password=password)
 
-    if user is not None:
-        user2 = CustomUser.objects.get(email=email)
-        if user2.is_verified == True:
+@router.post("/login")
+def login_user(request, email: str, password: str):
+    validate = CustomUser.objects.filter(email=email)
+    if validate:
+        validated = validate[0].username
+        user = authenticate(request, username=validated, password=password)
+        if user:
             login(request, user)
-            return {"detail": "User logged in successfully"}
+            hh = hasherGenerator()
+            access_token = hh.get("token").decode("utf-8")
+            # tokenDict={"token":access_token}
+            # CustomUser.objects.all().filter(id=user.id).update(**tokenDict)
+            user2 = CustomUser.objects.filter(id=user.id)[0]
+            user2.set_token(access_token)
+            image_url = request.build_absolute_uri(user2.image.url) if user2.image else ""
+            token=user2.token
+            user2.login()
+            return {"access_token": token, "user_id":user.id, "username":user2.username, "email":user2.email, "image":image_url, "message":'Logged in Successfully BKEND'}
         else:
-            return {"detail": "User not verified"}
-
-    return {"detail": "Invalid credentials"}
+            return {"message": "Invalid password BKEND"}
+    else:
+        return {"message": "Invalid Email BKEND"}
 
 
 @router.delete("/deleteUser/{user_id}/")
@@ -266,5 +283,17 @@ def delete_user(request, user_id):
     user.delete()
     return f"User {user.username} deleted successfully"
 
+
+@router.post('user/{user_id}/update_user_image', response=Union[AuthUserRetrievalSchema, str])
+def update_user_image(request, user_id:str, image:UploadedFile=FileEx(None)):
+    """
+    Update user: Could be used to update the user image.
+    """
+    user = get_object_or_404(CustomUser, id=user_id)
+    if user:
+        if image!=None:
+            user.image=image
+            user.save()
+    return user
            
 

@@ -6,9 +6,9 @@ from datetime import datetime
 
 
 
-class DeviceRegistrationSchema(Schema):
-    user_id:str=None
-    device_token:str=None
+# class DeviceRegistrationSchema(Schema):
+#     user_id:str=None
+#     device_token:str=None
 
 
 class DeviceRetrievalSchema(Schema):

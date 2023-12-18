@@ -28,28 +28,17 @@ class FriendshipRetrievalSchema(Schema):
     id:uuid.UUID=None
     user:AuthUserRetrievalSchema=None
     friend:AuthUserRetrievalSchema=None
+    is_accepted:bool=None
     
 
 class UserSettingRegistrationSchema(Schema):
     user_id:str=None
     theme:str=None
-    notification_preferences:json=None
+    notification_preferences:str=None
 
 
 class UserSettingRetrievalSchema(Schema):
     id:uuid.UUID=None
     user:AuthUserRetrievalSchema=None
     theme:str=None
-    notification_preferences:json=None
-    
-
-class UserStatusRegistrationSchema(Schema):
-    user_id:str=None
-    is_online:bool=None
-
-
-class UserStatusRetrievalSchema(Schema):
-    id:uuid.UUID=None
-    user:AuthUserRetrievalSchema=None
-    is_online:bool=None
-    last_online:datetime=None
+    notification_preferences:str=None

@@ -7,7 +7,7 @@ from messaging.models import *
 from schemas.messaging import *
 from django.db.models import Q
 
-router = Router(tags=["Messaging Endpoints"])
+router = Router(tags=["Messages Endpoints"])
 
 
 # MESSAGE ENDPOINTS
@@ -47,14 +47,14 @@ def list_all_messages_from_sender_to_receiver(request, sender_id, receiver_id):
     """Get a list of all messages from a sender (defined by the first parameter) to a receiver (defined by the second parameter)"""
     return Message.objects.filter(sender_id=sender_id, receiver_id=receiver_id)
 
-@router.get('{message_id}/get/', response=MessageRetrievalSchema)
+@router.get('message/{message_id}/get/', response=MessageRetrievalSchema)
 def get_message(request, message_id):
     """Get a specific message details"""
     message = get_object_or_404(Message, id=message_id)
     return message
 
 @router.post('send_message/', response=MessageRetrievalSchema)
-def send_message(request, messageData:MessageRegistrationSchema):
+def send_message(request, messageData:MessageRegistrationSchema=FormEx(None)):
     """Send a text message"""
     message = Message.objects.create(**messageData.dict())
     return message
@@ -70,7 +70,7 @@ def send_multimedia_message(request, image:UploadedFile=FileEx(None), video:Uplo
     except ValueError as e:
         return str(e)
     
-@router.delete('{message_id}/delete/')
+@router.delete('message/{message_id}/delete/')
 def delete_message(request, message_id):
     """Delete a specific message"""
     message = get_object_or_404(Message, id=message_id)
@@ -81,8 +81,11 @@ def delete_message(request, message_id):
 
 
 
-# MESSAGE ENDPOINTS
-# GROUP ENDPOINTS
+
+
+
+
+
 # GROUP_MESSAGE ENDPOINTS
 # POLL ENDPOINTS
 # POLL_VOTE ENDPOINTS
