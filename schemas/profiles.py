@@ -21,7 +21,7 @@ class UserProfileRetrievalSchema(Schema):
 
 class FriendshipRegistrationSchema(Schema):
     user_id:str=None
-    friend_id:str=None
+    friend_username:str=None
 
 
 class FriendshipRetrievalSchema(Schema):

@@ -21,7 +21,7 @@ def list_group_messages_by_group(request, group_id):
     return GroupMessage.objects.filter(group_id=group_id)
 
 @router.get('group/{group_id}/{sender_id}/list_all_group_messages/', response=List[GroupMessageRetrievalSchema])
-def list_group_messages_by_group(request, group_id, sender_id):
+def list_group_messages_by_group_and_user(request, group_id, sender_id):
     """Get a list of all group messages in a particular group by a particular user"""
     return GroupMessage.objects.filter(group_id=group_id, sender_id=sender_id)
 

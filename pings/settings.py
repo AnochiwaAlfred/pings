@@ -44,6 +44,8 @@ CORS_ALLOW_HEADERS=CORS_ALLOW_HEADERS
 # Application definition
 AUTH_USER_MODEL = "users.CustomUser"
 
+# ASGI_APPLICATION = "pings.routing.application"
+
 
 INSTALLED_APPS = [
     # ADMIN DASHBOARD

@@ -60,7 +60,24 @@ def list_notifications(request):
 @router.get('{user_id}/list_all_notifications/', response=List[NotificationRetrievalSchema])
 def list_user_notifications(request, user_id):
     """Get a list of a user's registered notifications"""
-    return Notification.objects.filter(user_id=user_id)
+    notifications = Notification.objects.filter(user_id=user_id).order_by('-timestamp')
+    notifications2 = []
+    for item in notifications:
+        notification = NotificationRetrievalSchema(
+            id=item.id,
+            # sender=item.sender,
+            content=item.content,
+            timestamp=item.timestamp,
+            is_read=item.is_read,
+            sender = NotificationAuthRetrievalSchema(
+                id=item.sender.id,
+                display_name=item.sender.display_name,
+                image=request.build_absolute_uri(item.sender.image.url) if item.sender.image else "",
+                is_online=item.sender.is_online
+            )
+        )
+        notifications2.append(notification)
+    return notifications2
 
 
 @router.get('{user_id}/list_all_unread_notifications/', response=List[NotificationRetrievalSchema])

@@ -42,3 +42,16 @@ class AuthUserStatusRetrievalSchema(Schema):
     is_superuser:bool=None
     
     
+    
+class NotificationAuthRetrievalSchema(Schema):
+    id:int=None
+    display_name:str=None
+    image:str=None
+    is_online:bool=None
+    
+class ContactsAuthRetrievalSchema(Schema):
+    id:int=None
+    display_name:str=None
+    username:str=None
+    image:str=None
+    is_online:bool=None

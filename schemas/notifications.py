@@ -24,7 +24,8 @@ class NotificationRegistrationSchema(Schema):
 
 class NotificationRetrievalSchema(Schema):
     id:uuid.UUID=None
-    user:AuthUserRetrievalSchema=None
+    # user:NotificationAuthRetrievalSchema=None
+    sender:NotificationAuthRetrievalSchema=None
     content:str=None
     timestamp:datetime=None
     is_read:bool=None

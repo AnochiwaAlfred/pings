@@ -190,3 +190,33 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   WEB SOCKET
+
+// const socket = new WebSocket('ws://127.0.0.1:8000/ws/chat/room_name/');
+
+// socket.addEventListener('open', (event) => {
+//     console.log('WebSocket connection opened:', event);
+// });
+
+// socket.addEventListener('message', (event) => {
+//     const message = JSON.parse(event.data)
+//     console.log("WebSocket message received:", message)
+//     // handle the incoming message as needed
+// })
+
+// socket.addEventListener('close', (event) => {
+//     console.log('WebSocket connection closed:', event);
+// });
