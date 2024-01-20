@@ -15,7 +15,8 @@ crispy-bootstrap5==2023.10
 cryptography==41.0.7
 defusedxml==0.8.0rc2
 dj-database-url==2.1.0
-Django==5.0
+# Django==5.0
+Django==4.2.9
 django-admin-argon-dashboard==1.0.16
 django-admin-corporate==1.0.2
 django-admin-datta==1.0.10
